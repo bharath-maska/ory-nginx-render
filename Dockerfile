@@ -1,13 +1,9 @@
-# Use the official Nginx base image
 FROM nginx:latest
 
-# Remove default Nginx config to avoid conflicts
-RUN rm /etc/nginx/conf.d/default.conf
+# Copy the fixed Nginx config
+COPY nginx.conf /etc/nginx/nginx.conf
 
-# Copy the custom Nginx configuration
-COPY nginx.conf /etc/nginx/conf.d/default.conf
-
-# Expose port 80 for incoming traffic
+# Expose port 80
 EXPOSE 80
 
 # Start Nginx
